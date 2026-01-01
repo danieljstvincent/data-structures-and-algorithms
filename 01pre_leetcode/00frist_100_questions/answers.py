@@ -101,8 +101,8 @@ def is_palindrome_simple(text):
 
 # Example usage and testing
 def print_multiplication_table(n):
-    pass
-
+    for i in range(1, 11):
+        print(f"{n} x {i} = {n * i}")
 def generate_fibonacci_numbers(n):
     pass
 
