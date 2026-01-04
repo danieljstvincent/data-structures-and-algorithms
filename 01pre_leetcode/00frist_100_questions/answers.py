@@ -1,9 +1,108 @@
-def count_character_frequency(s):
-    pass
 
+# 1. Print 'Hello, World!' with a user-provided name
+def hello_world(name):
+    print(f"Hello, World! My name is {name}")
+
+# 2. Return the sum of two integers
+def sum_two_numbers(a, b):
+    return a + b
+
+# 3. Given two numbers, return their sum, difference, product, and quotient
+def basic_operations(a, b):
+    if b == 0:
+        quotient = "undefined (division by zero)"
+    else:
+        quotient = a / b
+    
+    return {
+        'sum': a + b,
+        'difference': a - b,
+        'product': a * b,
+        'quotient': quotient
+    }
+
+# 4. Check if an integer is even
+def is_even(number):
+    return number % 2 == 0
+
+# 5. Find the minimum and maximum of three numbers
+def min_max_of_three(a, b, c):
+    minimum = min(a, b, c)
+    maximum = max(a, b, c)
+    return minimum, maximum
+
+# Alternative without using min/max functions:
+def min_max_of_three_manual(a, b, c):
+    minimum = a
+    if b < minimum:
+        minimum = b
+    if c < minimum:
+        minimum = c
+    
+    maximum = a
+    if b > maximum:
+        maximum = b
+    if c > maximum:
+        maximum = c
+    
+    return minimum, maximum
+
+# 6. Count digits, letters, and spaces in a string
+def count_characters(text):
+    digits = 0
+    letters = 0
+    spaces = 0
+    
+    for char in text:
+        if char.isdigit():
+            digits += 1
+        elif char.isalpha():
+            letters += 1
+        elif char.isspace():
+            spaces += 1
+    
+    return digits, letters, spaces
+
+# 7. Reverse a given string without built-in reverse functions
+def reverse_string(text):
+    reversed_text = ""
+    for i in range(len(text) - 1, -1, -1):
+        reversed_text += text[i]
+    return reversed_text
+
+# Alternative approach using slicing (though technically a built-in feature)
+def reverse_string_simple(text):
+    return text[::-1]
+
+# 8. Convert a string to uppercase, lowercase, and title case
+def string_cases(text):
+    return {
+        'uppercase': text.upper(),
+        'lowercase': text.lower(),
+        'titlecase': text.title()
+    }
+
+# 9. Check if a given string is a palindrome
+def is_palindrome(text):
+    # Remove spaces and convert to lowercase for accurate palindrome checking
+    cleaned_text = ''.join(text.lower().split())
+    
+    # Check if the string reads the same forwards and backwards
+    for i in range(len(cleaned_text) // 2):
+        if cleaned_text[i] != cleaned_text[-(i + 1)]:
+            return False
+    return True
+
+# Alternative palindrome check using string comparison
+def is_palindrome_simple(text):
+    cleaned_text = ''.join(text.lower().split())
+    return cleaned_text == cleaned_text[::-1]
+
+
+# Example usage and testing
 def print_multiplication_table(n):
-    pass
-
+    for i in range(1, 11):
+        print(f"{n} x {i} = {n * i}")
 def generate_fibonacci_numbers(n):
     pass
 
@@ -275,15 +374,57 @@ def is_divisible_by_three(number_string):
 
 # Test data and function calls
 if __name__ == "__main__":
-    # Your existing tests
-    print(question2(3, 100))
-    print(question3(100, 100))
-    print(question4(31))
-    print(question5(1, 2, 3))
-    print(question6("I am the real king of the 707"))
-    print(question7("batman"))
-    print(question8("batman"))
-    print(question9('racecar'))  # Fixed: 'racecassr' is not a palindrome
+# Test function 1
+    print("1. Testing hello_world:")
+    hello_world("Alice")
+    print()
+    
+    # Test function 2
+    print(f"2. Sum of 5 and 3: {sum_two_numbers(5, 3)}")
+    print()
+    
+    # Test function 3
+    print(f"3. Basic operations of 10 and 2: {basic_operations(10, 2)}")
+    print(f"   Basic operations of 10 and 0: {basic_operations(10, 0)}")
+    print()
+    
+    # Test function 4
+    print(f"4. Is 7 even? {is_even(7)}")
+    print(f"   Is 8 even? {is_even(8)}")
+    print()
+    
+    # Test function 5
+    print(f"5. Min and max of (3, 1, 4): {min_max_of_three(3, 1, 4)}")
+    print()
+    
+    # Test function 6
+    text = "Hello World 123!"
+    digits, letters, spaces = count_characters(text)
+    print(f"6. In '{text}':")
+    print(f"   Digits: {digits}, Letters: {letters}, Spaces: {spaces}")
+    print()
+    
+    # Test function 7
+    test_string = "Python"
+    print(f"7. Reverse of '{test_string}': '{reverse_string(test_string)}'")
+    print()
+    
+    # Test function 8
+    test_string = "hello world"
+    cases = string_cases(test_string)
+    print(f"8. Cases for '{test_string}':")
+    print(f"   Uppercase: {cases['uppercase']}")
+    print(f"   Lowercase: {cases['lowercase']}")
+    print(f"   Titlecase: {cases['titlecase']}")
+    print()
+    
+    # Test function 9
+    palindrome_test = "A man a plan a canal Panama"
+    not_palindrome = "Hello World"
+    print(f"9. Is '{palindrome_test}' a palindrome? {is_palindrome(palindrome_test)}")
+    print(f"   Is '{not_palindrome}' a palindrome? {is_palindrome(not_palindrome)}")
+
+def count_character_frequency(s):
     
     # Problem 10
     count_character_frequency("hello world")
